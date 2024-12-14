@@ -5,13 +5,12 @@ project(tref LANGUAGES CXX VERSION 1.0.0)
 option(TREF_ENABLE_INSTALL "whether to enable the install rule" ON)
 option(TREF_BUILD_TOOLS "whether to build tools for working with tref files" ON)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(lz4 REQUIRED IMPORTED_TARGET liblz4)
+find_package(lz4 REQUIRED)
 
 add_library(tref STATIC src/tref.cpp)
 target_sources(tref PUBLIC FILE_SET HEADERS FILES include/tref/qoi.h include/tref/tref.hpp)
 target_compile_features(tref PUBLIC cxx_std_20)
-target_link_libraries(tref PUBLIC PkgConfig::lz4)
+target_link_libraries(tref PUBLIC lz4)
 
 if(TREF_ENABLE_INSTALL)
     include(GNUInstallDirs)
