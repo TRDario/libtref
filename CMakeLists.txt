@@ -8,7 +8,7 @@ option(TREF_BUILD_TOOLS "whether to build tools for working with tref files" ON)
 find_package(lz4 REQUIRED)
 
 add_library(tref STATIC src/tref.cpp)
-target_sources(tref PUBLIC FILE_SET HEADERS FILES include/tref/qoi.h include/tref/tref.hpp)
+target_sources(tref PUBLIC FILE_SET HEADERS BASE_DIRS include FILES include/tref/qoi.h include/tref/tref.hpp)
 target_compile_features(tref PUBLIC cxx_std_20)
 target_link_libraries(tref PUBLIC lz4)
 
