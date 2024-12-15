@@ -10,6 +10,7 @@ project(trefc LANGUAGES C CXX VERSION 1.0.0)
 add_executable(trefc src/input.cpp src/image.cpp src/output.cpp src/main.cpp)
 target_compile_features(trefc PRIVATE cxx_std_20)
 target_link_libraries(trefc PRIVATE tref)
+set_target_properties(trefc PROPERTIES DEBUG_POSTFIX "d")
 
 if (TREFC_ANSI_COLORS)
     target_compile_definitions(trefc PRIVATE TREFC_ANSI_COLORS)

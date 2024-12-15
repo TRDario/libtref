@@ -11,6 +11,7 @@ add_library(tref STATIC src/tref.cpp)
 target_sources(tref PUBLIC FILE_SET HEADERS BASE_DIRS include FILES include/tref/qoi.h include/tref/tref.hpp)
 target_compile_features(tref PUBLIC cxx_std_20)
 target_link_libraries(tref PUBLIC lz4)
+set_target_properties(tref PROPERTIES DEBUG_POSTFIX "d")
 
 if(TREF_ENABLE_INSTALL)
     include(GNUInstallDirs)
