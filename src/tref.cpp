@@ -49,20 +49,19 @@ tref::DecodingResult tref::decode(std::istream& is)
 		throw DecodingError{"Invalid .tref file header."};
 	}
 
-	std::uint32_t uncompressedSize;
-	is.read((char*)(&uncompressedSize), sizeof(uncompressedSize));
+	std::uint32_t rawSize;
+	is.read((char*)(&rawSize), sizeof(rawSize));
 
-	std::vector<char> compressedData;
-	std::copy(std::istreambuf_iterator<char>{is}, std::istreambuf_iterator<char>{}, std::back_inserter(compressedData));
+	std::vector<char> lz4Data;
+	std::vector<char> rawData(rawSize);
 
-	std::vector<char> uncompressedData(uncompressedSize);
-	const auto        reportedUncompressedSize{LZ4_decompress_safe(compressedData.data(), uncompressedData.data(),
-																   compressedData.size(), uncompressedData.size())};
-	if (reportedUncompressedSize != uncompressedSize) {
+	std::copy(std::istreambuf_iterator<char>{is}, std::istreambuf_iterator<char>{}, std::back_inserter(lz4Data));
+	const auto reportedSize{LZ4_decompress_safe(lz4Data.data(), rawData.data(), lz4Data.size(), rawData.size())};
+	if (std::uint32_t(reportedSize) != rawSize) {
 		throw DecodingError{"LZ4 decompression of tref file failed."};
 	}
-	char* ptr{uncompressedData.data()};
 
+	char*    ptr{rawData.data()};
 	auto     lineSkip{readBinary<std::int32_t>(ptr)};
 	auto     nglyphs{readBinary<std::uint32_t>(ptr)};
 	GlyphMap glyphs;
@@ -71,7 +70,7 @@ tref::DecodingResult tref::decode(std::istream& is)
 	}
 
 	qoi_desc desc;
-	auto     decodedImage{qoi_decode(ptr, uncompressedData.size() - (ptr - uncompressedData.data()), &desc, 4)};
+	auto     decodedImage{qoi_decode(ptr, rawData.size() - (ptr - rawData.data()), &desc, 4)};
 	if (decodedImage == nullptr) {
 		throw DecodingError{"Failed to decode QOI data."};
 	}
