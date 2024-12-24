@@ -39,6 +39,8 @@ namespace tref {
 		 * The distance to move forward by after drawing this glyph.
 		 **************************************************************************************************************/
 		std::int16_t advance;
+
+		friend constexpr bool operator==(const Glyph&, const Glyph&) noexcept = default;
 	};
 
 	/******************************************************************************************************************
