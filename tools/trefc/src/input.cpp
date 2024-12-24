@@ -337,7 +337,7 @@ Expected<FontInfo, ErrorCode> loadFontInfo(std::string_view path)
 		}
 		fontInfo.glyphs.emplace(codepoint, glyph);
 	}
-	if (fontInfo.glyphs.empty()) {
+	if (!fontInfo.glyphs.contains('\0')) {
 		fontInfo.glyphs.emplace('\0', tref::Glyph{0, 0, 0, 0, 0, 0, 0});
 	}
 	return std::move(fontInfo);
