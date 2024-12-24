@@ -121,114 +121,117 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structtref_1_1Glyph.html#a08c35268925d2cbdebe1351953c1b2b3">   41</a></span>        std::int16_t <a class="code hl_variable" href="structtref_1_1Glyph.html#a08c35268925d2cbdebe1351953c1b2b3">advance</a>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    };</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structtref_1_1Glyph.html#a74fd19bb9aa9849ac1a4d9a933105c62">   43</a></span>        <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="structtref_1_1Glyph.html#a74fd19bb9aa9849ac1a4d9a933105c62">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structtref_1_1Glyph.html">Glyph</a>&amp;, <span class="keyword">const</span> <a class="code hl_struct" href="structtref_1_1Glyph.html">Glyph</a>&amp;) <span class="keyword">noexcept</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">   47</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">GlyphMap</a> = std::unordered_map&lt;Codepoint, Glyph&gt;;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html">   52</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classtref_1_1OutputBitmap.html">OutputBitmap</a> {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a60ec0852dc12150a7ff77136e1dfa37c">   61</a></span>        <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a60ec0852dc12150a7ff77136e1dfa37c">OutputBitmap</a>(std::byte* <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">data</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">width</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">height</a>) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a9acc4ed37d9b36f305f0c54cb880486b">   66</a></span>        <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a9acc4ed37d9b36f305f0c54cb880486b">~OutputBitmap</a>() noexcept;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">   73</a></span>        std::span&lt;const std::<span class="keywordtype">byte</span>&gt; <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">data</a>() const noexcept;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">   80</a></span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">width</a>() const noexcept;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">   87</a></span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">height</a>() const noexcept;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      private:</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        std::<span class="keywordtype">byte</span>*   _data;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _width;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _height;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    };</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">   49</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">GlyphMap</a> = std::unordered_map&lt;Codepoint, Glyph&gt;;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html">   54</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classtref_1_1OutputBitmap.html">OutputBitmap</a> {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a60ec0852dc12150a7ff77136e1dfa37c">   63</a></span>        <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a60ec0852dc12150a7ff77136e1dfa37c">OutputBitmap</a>(std::byte* <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">data</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">width</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">height</a>) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a9acc4ed37d9b36f305f0c54cb880486b">   68</a></span>        <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a9acc4ed37d9b36f305f0c54cb880486b">~OutputBitmap</a>() noexcept;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">   75</a></span>        std::span&lt;const std::<span class="keywordtype">byte</span>&gt; <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">data</a>() const noexcept;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">   82</a></span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">width</a>() const noexcept;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">   89</a></span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">height</a>() const noexcept;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      private:</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        std::<span class="keywordtype">byte</span>*   _data;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _width;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _height;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    };</div>
 </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="foldopen" id="foldopen00098" data-start="{" data-end="};">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingError.html">   98</a></span>    struct <a class="code hl_struct" href="structtref_1_1DecodingError.html">DecodingError</a> : std::runtime_error {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keyword">using </span>runtime_error::runtime_error;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    };</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="};">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingError.html">  100</a></span>    struct <a class="code hl_struct" href="structtref_1_1DecodingError.html">DecodingError</a> : std::runtime_error {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">using </span>runtime_error::runtime_error;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    };</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="};">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html">  105</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtref_1_1DecodingResult.html">DecodingResult</a> {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0">  109</a></span>        std::int32_t <a class="code hl_variable" href="structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0">lineSkip</a>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59">  114</a></span>        <a class="code hl_typedef" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">GlyphMap</a> <a class="code hl_variable" href="structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59">glyphs</a>;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f">  119</a></span>        <a class="code hl_class" href="classtref_1_1OutputBitmap.html">OutputBitmap</a> <a class="code hl_variable" href="structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f">bitmap</a>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    };</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="};">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html">  107</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtref_1_1DecodingResult.html">DecodingResult</a> {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0">  111</a></span>        std::int32_t <a class="code hl_variable" href="structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0">lineSkip</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59">  116</a></span>        <a class="code hl_typedef" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">GlyphMap</a> <a class="code hl_variable" href="structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59">glyphs</a>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f">  121</a></span>        <a class="code hl_class" href="classtref_1_1OutputBitmap.html">OutputBitmap</a> <a class="code hl_variable" href="structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f">bitmap</a>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    };</div>
 </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="namespacetref.html#ac3845810d7c5081c97f2a23c2691b3b7">  131</a></span>    <a class="code hl_struct" href="structtref_1_1DecodingResult.html">DecodingResult</a> <a class="code hl_function" href="namespacetref.html#ac3845810d7c5081c97f2a23c2691b3b7">decode</a>(std::istream&amp; is);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="namespacetref.html#ac3845810d7c5081c97f2a23c2691b3b7">  133</a></span>    <a class="code hl_struct" href="structtref_1_1DecodingResult.html">DecodingResult</a> <a class="code hl_function" href="namespacetref.html#ac3845810d7c5081c97f2a23c2691b3b7">decode</a>(std::istream&amp; is);</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="foldopen" id="foldopen00138" data-start="{" data-end="};">
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="structtref_1_1InputBitmap.html">  138</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtref_1_1InputBitmap.html">InputBitmap</a> {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc">  142</a></span>        <span class="keyword">const</span> <span class="keywordtype">void</span>* <a class="code hl_variable" href="structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc">data</a>;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1">  147</a></span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, <a class="code hl_variable" href="structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1">height</a>;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    };</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="foldopen" id="foldopen00140" data-start="{" data-end="};">
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="structtref_1_1InputBitmap.html">  140</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtref_1_1InputBitmap.html">InputBitmap</a> {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc">  144</a></span>        <span class="keyword">const</span> <span class="keywordtype">void</span>* <a class="code hl_variable" href="structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc">data</a>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1">  149</a></span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, <a class="code hl_variable" href="structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1">height</a>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    };</div>
 </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="foldopen" id="foldopen00153" data-start="{" data-end="};">
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="structtref_1_1EncodingError.html">  153</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtref_1_1EncodingError.html">EncodingError</a> : std::runtime_error {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keyword">using </span>runtime_error::runtime_error;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    };</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="};">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="structtref_1_1EncodingError.html">  155</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtref_1_1EncodingError.html">EncodingError</a> : std::runtime_error {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keyword">using </span>runtime_error::runtime_error;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    };</div>
 </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="namespacetref.html#a08fe760c7115027caeaf55c3eb16c470">  167</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacetref.html#a08fe760c7115027caeaf55c3eb16c470">encode</a>(std::ostream&amp; os, std::int32_t lineSkip, <a class="code hl_typedef" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">GlyphMap</a> glyphs, <a class="code hl_struct" href="structtref_1_1InputBitmap.html">InputBitmap</a> bitmap);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>} <span class="comment">// namespace tref</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="namespacetref.html#a08fe760c7115027caeaf55c3eb16c470">  169</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacetref.html#a08fe760c7115027caeaf55c3eb16c470">encode</a>(std::ostream&amp; os, std::int32_t lineSkip, <a class="code hl_typedef" href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">GlyphMap</a> glyphs, <a class="code hl_struct" href="structtref_1_1InputBitmap.html">InputBitmap</a> bitmap);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>} <span class="comment">// namespace tref</span></div>
 </div>
-<div class="ttc" id="aclasstref_1_1OutputBitmap_html"><div class="ttname"><a href="classtref_1_1OutputBitmap.html">tref::OutputBitmap</a></div><div class="ttdoc">Simple bitmap class used for output.</div><div class="ttdef"><b>Definition</b> tref.hpp:52</div></div>
+<div class="ttc" id="aclasstref_1_1OutputBitmap_html"><div class="ttname"><a href="classtref_1_1OutputBitmap.html">tref::OutputBitmap</a></div><div class="ttdoc">Simple bitmap class used for output.</div><div class="ttdef"><b>Definition</b> tref.hpp:54</div></div>
 <div class="ttc" id="aclasstref_1_1OutputBitmap_html_a25ee354a77b5cf973610e81d079d7758"><div class="ttname"><a href="classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758">tref::OutputBitmap::width</a></div><div class="ttdeci">unsigned int width() const noexcept</div><div class="ttdoc">Gets the bitmap's width.</div></div>
 <div class="ttc" id="aclasstref_1_1OutputBitmap_html_a46d83f53b4e2e8170e8186b55a6170af"><div class="ttname"><a href="classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af">tref::OutputBitmap::height</a></div><div class="ttdeci">unsigned int height() const noexcept</div><div class="ttdoc">Gets the bitmap's height.</div></div>
 <div class="ttc" id="aclasstref_1_1OutputBitmap_html_a60ec0852dc12150a7ff77136e1dfa37c"><div class="ttname"><a href="classtref_1_1OutputBitmap.html#a60ec0852dc12150a7ff77136e1dfa37c">tref::OutputBitmap::OutputBitmap</a></div><div class="ttdeci">OutputBitmap(std::byte *data, unsigned int width, unsigned int height) noexcept</div><div class="ttdoc">Constructs a bitmap from existing data.</div></div>
 <div class="ttc" id="aclasstref_1_1OutputBitmap_html_a77986563756a30d3d7853c89735bd83f"><div class="ttname"><a href="classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f">tref::OutputBitmap::data</a></div><div class="ttdeci">std::span&lt; const std::byte &gt; data() const noexcept</div><div class="ttdoc">Gets the bitmap's data.</div></div>
 <div class="ttc" id="aclasstref_1_1OutputBitmap_html_a9acc4ed37d9b36f305f0c54cb880486b"><div class="ttname"><a href="classtref_1_1OutputBitmap.html#a9acc4ed37d9b36f305f0c54cb880486b">tref::OutputBitmap::~OutputBitmap</a></div><div class="ttdeci">~OutputBitmap() noexcept</div><div class="ttdoc">Deallocates the bitmap.</div></div>
 <div class="ttc" id="anamespacetref_html"><div class="ttname"><a href="namespacetref.html">tref</a></div><div class="ttdoc">Namespace containing all tref functionality.</div><div class="ttdef"><b>Definition</b> tref.hpp:12</div></div>
-<div class="ttc" id="anamespacetref_html_a00af86d01e676fd70d1981e6c5cf2e4c"><div class="ttname"><a href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">tref::GlyphMap</a></div><div class="ttdeci">std::unordered_map&lt; Codepoint, Glyph &gt; GlyphMap</div><div class="ttdoc">Shorthand for a collection of glyphs with associated codepoints.</div><div class="ttdef"><b>Definition</b> tref.hpp:47</div></div>
+<div class="ttc" id="anamespacetref_html_a00af86d01e676fd70d1981e6c5cf2e4c"><div class="ttname"><a href="namespacetref.html#a00af86d01e676fd70d1981e6c5cf2e4c">tref::GlyphMap</a></div><div class="ttdeci">std::unordered_map&lt; Codepoint, Glyph &gt; GlyphMap</div><div class="ttdoc">Shorthand for a collection of glyphs with associated codepoints.</div><div class="ttdef"><b>Definition</b> tref.hpp:49</div></div>
 <div class="ttc" id="anamespacetref_html_a08fe760c7115027caeaf55c3eb16c470"><div class="ttname"><a href="namespacetref.html#a08fe760c7115027caeaf55c3eb16c470">tref::encode</a></div><div class="ttdeci">void encode(std::ostream &amp;os, std::int32_t lineSkip, GlyphMap glyphs, InputBitmap bitmap)</div><div class="ttdoc">Encodes a tref file and writes it to a stream.</div></div>
 <div class="ttc" id="anamespacetref_html_a3ed10c86c2d7182e5cef78dbcc97ef8c"><div class="ttname"><a href="namespacetref.html#a3ed10c86c2d7182e5cef78dbcc97ef8c">tref::Codepoint</a></div><div class="ttdeci">std::uint32_t Codepoint</div><div class="ttdoc">Unicode codepoint type.</div><div class="ttdef"><b>Definition</b> tref.hpp:16</div></div>
 <div class="ttc" id="anamespacetref_html_ac3845810d7c5081c97f2a23c2691b3b7"><div class="ttname"><a href="namespacetref.html#ac3845810d7c5081c97f2a23c2691b3b7">tref::decode</a></div><div class="ttdeci">DecodingResult decode(std::istream &amp;is)</div><div class="ttdoc">Decodes a tref file from a stream.</div></div>
-<div class="ttc" id="astructtref_1_1DecodingError_html"><div class="ttname"><a href="structtref_1_1DecodingError.html">tref::DecodingError</a></div><div class="ttdoc">Error thrown when decoding a tref file fails.</div><div class="ttdef"><b>Definition</b> tref.hpp:98</div></div>
-<div class="ttc" id="astructtref_1_1DecodingResult_html"><div class="ttname"><a href="structtref_1_1DecodingResult.html">tref::DecodingResult</a></div><div class="ttdoc">tref file decoding result.</div><div class="ttdef"><b>Definition</b> tref.hpp:105</div></div>
-<div class="ttc" id="astructtref_1_1DecodingResult_html_a08a587676defd20ba770f244622c9da0"><div class="ttname"><a href="structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0">tref::DecodingResult::lineSkip</a></div><div class="ttdeci">std::int32_t lineSkip</div><div class="ttdoc">The distance between lines in pixels.</div><div class="ttdef"><b>Definition</b> tref.hpp:109</div></div>
-<div class="ttc" id="astructtref_1_1DecodingResult_html_ab69b1d71eaea4636ffcae79b3993508f"><div class="ttname"><a href="structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f">tref::DecodingResult::bitmap</a></div><div class="ttdeci">OutputBitmap bitmap</div><div class="ttdoc">The font bitmap data.</div><div class="ttdef"><b>Definition</b> tref.hpp:119</div></div>
-<div class="ttc" id="astructtref_1_1DecodingResult_html_ac51e6df153b2e5a89ccf08dc70752f59"><div class="ttname"><a href="structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59">tref::DecodingResult::glyphs</a></div><div class="ttdeci">GlyphMap glyphs</div><div class="ttdoc">The font glyph data.</div><div class="ttdef"><b>Definition</b> tref.hpp:114</div></div>
-<div class="ttc" id="astructtref_1_1EncodingError_html"><div class="ttname"><a href="structtref_1_1EncodingError.html">tref::EncodingError</a></div><div class="ttdoc">Error thrown when encoding a tref file fails.</div><div class="ttdef"><b>Definition</b> tref.hpp:153</div></div>
+<div class="ttc" id="astructtref_1_1DecodingError_html"><div class="ttname"><a href="structtref_1_1DecodingError.html">tref::DecodingError</a></div><div class="ttdoc">Error thrown when decoding a tref file fails.</div><div class="ttdef"><b>Definition</b> tref.hpp:100</div></div>
+<div class="ttc" id="astructtref_1_1DecodingResult_html"><div class="ttname"><a href="structtref_1_1DecodingResult.html">tref::DecodingResult</a></div><div class="ttdoc">tref file decoding result.</div><div class="ttdef"><b>Definition</b> tref.hpp:107</div></div>
+<div class="ttc" id="astructtref_1_1DecodingResult_html_a08a587676defd20ba770f244622c9da0"><div class="ttname"><a href="structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0">tref::DecodingResult::lineSkip</a></div><div class="ttdeci">std::int32_t lineSkip</div><div class="ttdoc">The distance between lines in pixels.</div><div class="ttdef"><b>Definition</b> tref.hpp:111</div></div>
+<div class="ttc" id="astructtref_1_1DecodingResult_html_ab69b1d71eaea4636ffcae79b3993508f"><div class="ttname"><a href="structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f">tref::DecodingResult::bitmap</a></div><div class="ttdeci">OutputBitmap bitmap</div><div class="ttdoc">The font bitmap data.</div><div class="ttdef"><b>Definition</b> tref.hpp:121</div></div>
+<div class="ttc" id="astructtref_1_1DecodingResult_html_ac51e6df153b2e5a89ccf08dc70752f59"><div class="ttname"><a href="structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59">tref::DecodingResult::glyphs</a></div><div class="ttdeci">GlyphMap glyphs</div><div class="ttdoc">The font glyph data.</div><div class="ttdef"><b>Definition</b> tref.hpp:116</div></div>
+<div class="ttc" id="astructtref_1_1EncodingError_html"><div class="ttname"><a href="structtref_1_1EncodingError.html">tref::EncodingError</a></div><div class="ttdoc">Error thrown when encoding a tref file fails.</div><div class="ttdef"><b>Definition</b> tref.hpp:155</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html"><div class="ttname"><a href="structtref_1_1Glyph.html">tref::Glyph</a></div><div class="ttdoc">Font glyph information.</div><div class="ttdef"><b>Definition</b> tref.hpp:21</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_a08c35268925d2cbdebe1351953c1b2b3"><div class="ttname"><a href="structtref_1_1Glyph.html#a08c35268925d2cbdebe1351953c1b2b3">tref::Glyph::advance</a></div><div class="ttdeci">std::int16_t advance</div><div class="ttdoc">The distance to move forward by after drawing this glyph.</div><div class="ttdef"><b>Definition</b> tref.hpp:41</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_a29f7a5d5baac2235fdd47377030cab71"><div class="ttname"><a href="structtref_1_1Glyph.html#a29f7a5d5baac2235fdd47377030cab71">tref::Glyph::height</a></div><div class="ttdeci">std::uint16_t height</div><div class="ttdef"><b>Definition</b> tref.hpp:30</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_a4967a7e8448e393a8d60fa620fa0c142"><div class="ttname"><a href="structtref_1_1Glyph.html#a4967a7e8448e393a8d60fa620fa0c142">tref::Glyph::xOffset</a></div><div class="ttdeci">std::int16_t xOffset</div><div class="ttdoc">The offset at which to draw the glyph's texture compared to its actual position.</div><div class="ttdef"><b>Definition</b> tref.hpp:36</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_a54a0b5e6a5c57e59ceeb9a5a314ae8aa"><div class="ttname"><a href="structtref_1_1Glyph.html#a54a0b5e6a5c57e59ceeb9a5a314ae8aa">tref::Glyph::y</a></div><div class="ttdeci">std::uint16_t y</div><div class="ttdef"><b>Definition</b> tref.hpp:25</div></div>
+<div class="ttc" id="astructtref_1_1Glyph_html_a74fd19bb9aa9849ac1a4d9a933105c62"><div class="ttname"><a href="structtref_1_1Glyph.html#a74fd19bb9aa9849ac1a4d9a933105c62">tref::Glyph::operator==</a></div><div class="ttdeci">friend constexpr bool operator==(const Glyph &amp;, const Glyph &amp;) noexcept=default</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_a8f25065d3e6d8a45483432cbe9aa0ec4"><div class="ttname"><a href="structtref_1_1Glyph.html#a8f25065d3e6d8a45483432cbe9aa0ec4">tref::Glyph::width</a></div><div class="ttdeci">std::uint16_t width</div><div class="ttdoc">The size of the glyph's texture box.</div><div class="ttdef"><b>Definition</b> tref.hpp:30</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_aa1ed877e9dbb68da69795bd93c7ead18"><div class="ttname"><a href="structtref_1_1Glyph.html#aa1ed877e9dbb68da69795bd93c7ead18">tref::Glyph::x</a></div><div class="ttdeci">std::uint16_t x</div><div class="ttdoc">The top-left corner of the glyph's texture box.</div><div class="ttdef"><b>Definition</b> tref.hpp:25</div></div>
 <div class="ttc" id="astructtref_1_1Glyph_html_aa75d5f30f71d64211a20df172ad2c772"><div class="ttname"><a href="structtref_1_1Glyph.html#aa75d5f30f71d64211a20df172ad2c772">tref::Glyph::yOffset</a></div><div class="ttdeci">std::int16_t yOffset</div><div class="ttdef"><b>Definition</b> tref.hpp:36</div></div>
-<div class="ttc" id="astructtref_1_1InputBitmap_html"><div class="ttname"><a href="structtref_1_1InputBitmap.html">tref::InputBitmap</a></div><div class="ttdoc">Struct containing data about the bitmap to encode into a tref file.</div><div class="ttdef"><b>Definition</b> tref.hpp:138</div></div>
-<div class="ttc" id="astructtref_1_1InputBitmap_html_a6b14bf4a2ad6389292410d43cbdac6c1"><div class="ttname"><a href="structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1">tref::InputBitmap::height</a></div><div class="ttdeci">unsigned int height</div><div class="ttdef"><b>Definition</b> tref.hpp:147</div></div>
-<div class="ttc" id="astructtref_1_1InputBitmap_html_acbd44285b84ffc2b84d7d0c67460aefc"><div class="ttname"><a href="structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc">tref::InputBitmap::data</a></div><div class="ttdeci">const void * data</div><div class="ttdoc">Pointer to the beginning of the bitmap data.</div><div class="ttdef"><b>Definition</b> tref.hpp:142</div></div>
+<div class="ttc" id="astructtref_1_1InputBitmap_html"><div class="ttname"><a href="structtref_1_1InputBitmap.html">tref::InputBitmap</a></div><div class="ttdoc">Struct containing data about the bitmap to encode into a tref file.</div><div class="ttdef"><b>Definition</b> tref.hpp:140</div></div>
+<div class="ttc" id="astructtref_1_1InputBitmap_html_a6b14bf4a2ad6389292410d43cbdac6c1"><div class="ttname"><a href="structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1">tref::InputBitmap::height</a></div><div class="ttdeci">unsigned int height</div><div class="ttdef"><b>Definition</b> tref.hpp:149</div></div>
+<div class="ttc" id="astructtref_1_1InputBitmap_html_acbd44285b84ffc2b84d7d0c67460aefc"><div class="ttname"><a href="structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc">tref::InputBitmap::data</a></div><div class="ttdeci">const void * data</div><div class="ttdoc">Pointer to the beginning of the bitmap data.</div><div class="ttdef"><b>Definition</b> tref.hpp:144</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
