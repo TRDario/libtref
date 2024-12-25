@@ -77,7 +77,7 @@ tref::DecodingResult tref::decode(std::istream& is)
 	return {lineSkip, std::move(glyphs), OutputBitmap{(std::byte*)(decodedImage), desc.width, desc.height}};
 }
 
-void tref::encode(std::ostream& os, std::int32_t lineSkip, GlyphMap glyphs, InputBitmap bitmap)
+void tref::encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyphs, const InputBitmap& bitmap)
 {
 	qoi_desc   desc{bitmap.width, bitmap.height, 4, QOI_SRGB};
 	int        qoiImageSize;

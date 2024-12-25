@@ -166,6 +166,6 @@ namespace tref {
 	 * @param[in] glyphs The font glyph data.
 	 * @param[in] bitmap The font bitmap data.
 	 ******************************************************************************************************************/
-	void encode(std::ostream& os, std::int32_t lineSkip, GlyphMap glyphs, InputBitmap bitmap);
+	void encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyphs, const InputBitmap& bitmap);
 
 } // namespace tref
