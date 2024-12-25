@@ -404,3 +404,7 @@ build/*
 doxygen/*
 !doxygen/manual
 !doxygen/Doxyfile
+!doxygen/header.html
+!doxygen/custom.css
+!doxygen/doxygen-awesome-darkmode-toggle.js
+!doxygen/doxygen-awesome.css
