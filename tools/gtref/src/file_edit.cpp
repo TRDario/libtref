@@ -150,7 +150,7 @@ void FileEdit::addEditMenu(Selection& selection)
 		if (ImGui::MenuItem("Insert Glyph", "Ins", false, !empty())) {
 			insertGlyph(selection);
 		}
-		if (ImGui::MenuItem("Delete Selected", "Del", false, !selection.empty())) {
+		if (ImGui::MenuItem("Delete Selected", "Del", false, !selection.empty() && selection.value() != '\0')) {
 			deleteGlyph(selection);
 		}
 		ImGui::EndMenu();
@@ -166,7 +166,7 @@ void FileEdit::addEditMenu(Selection& selection)
 		else if (!empty() && ImGui::IsKeyChordPressed(ImGuiKey_Insert)) {
 			insertGlyph(selection);
 		}
-		else if (!selection.empty() && ImGui::IsKeyChordPressed(ImGuiKey_Delete)) {
+		else if (!selection.empty() && selection.value() != '\0' && ImGui::IsKeyChordPressed(ImGuiKey_Delete)) {
 			deleteGlyph(selection);
 		}
 		else {
@@ -457,9 +457,6 @@ void FileEdit::saveAs(const std::filesystem::path& path)
 {
 	GTREF_ASSERT(!empty());
 
-	if (!_file->font.glyphs.contains('\0')) {
-		_file->font.glyphs.emplace('\0', tref::Glyph{0, 0, 0, 0, 0, 0, 0});
-	}
 	saveFont(path, _file->font, _file->bitmap);
 	_saved = _file->font;
 	if (_path != path) {
@@ -546,6 +543,7 @@ void FileEdit::deleteGlyph(Selection& selection)
 	GTREF_ASSERT(!empty());
 	GTREF_ASSERT(!selection.empty());
 	GTREF_ASSERT(glyphs().contains(selection.value()));
+	GTREF_ASSERT(selection.value() != '\0');
 
 	_file->history.addEdit(History::GlyphDeletion{selection.value(), glyphs().at(selection.value())});
 	_file->font.glyphs.erase(selection.value());
@@ -593,6 +591,7 @@ void FileEdit::editGlyphCodepoint(tref::Codepoint old, tref::Codepoint now)
 	GTREF_ASSERT(!empty());
 	GTREF_ASSERT(glyphs().contains(old));
 	GTREF_ASSERT(!glyphs().contains(now));
+	GTREF_ASSERT(old != '\0');
 
 	_file->history.addEdit(History::GlyphCodepointEdit{old, now});
 	_file->font.glyphs.emplace(now, glyphs().at(old));
@@ -681,6 +680,10 @@ void FileEdit::addCodepointEditor(Selection& selection, tref::Codepoint& cpEdit)
 	GTREF_ASSERT(!empty());
 	GTREF_ASSERT(!selection.empty());
 
+	if (selection.value() == '\0') {
+		ImGui::BeginDisabled();
+	}
+
 	if (ImGui::InputScalar("Codepoint", ImGuiDataType_U32, &cpEdit, nullptr, nullptr, "%X",
 						   ImGuiInputTextFlags_CharsHexadecimal)) {
 		if (!glyphs().contains(cpEdit) && cpEdit < 0x110000) {
@@ -722,6 +725,10 @@ void FileEdit::addCodepointEditor(Selection& selection, tref::Codepoint& cpEdit)
 		}
 
 		ImGui::Text(" = '%s'", buf.data());
+	}
+
+	if (selection.value() == '\0') {
+		ImGui::EndDisabled();
 	}
 }
 

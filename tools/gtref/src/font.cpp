@@ -6,7 +6,7 @@
 std::optional<LoadResult> loadImage(const std::filesystem::path& path) noexcept
 {
 	try {
-		return {{.font = {.lineSkip = 0, .glyphs = {}}, .image = tr::loadBitmapFile(path)}};
+		return {{.font = {.lineSkip = 0, .glyphs = {{'\0', {}}}}, .image = tr::loadBitmapFile(path)}};
 	}
 	catch (std::exception& err) {
 		const std::string message{std::format("Failed to load image from {}.", path.string())};
