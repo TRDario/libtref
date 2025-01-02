@@ -408,3 +408,6 @@ doxygen/*
 !doxygen/custom.css
 !doxygen/doxygen-awesome-darkmode-toggle.js
 !doxygen/doxygen-awesome.css
+
+# gtref resource headers
+tools/gtref/resources/*.hpp

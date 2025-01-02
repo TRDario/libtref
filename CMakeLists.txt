@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.23.0...3.30.0 FATAL_ERROR)
 project(tref LANGUAGES CXX VERSION 1.0.0)
 
 option(TREF_ENABLE_INSTALL "whether to enable the install rule" ON)
-option(TREF_BUILD_TOOLS "whether to build tools for working with tref files" ON)
+option(TREF_BUILD_TOOLS "whether to build tools for working with tref files" OFF)
 
 find_package(lz4 REQUIRED)
 
@@ -57,4 +57,5 @@ endif ()
 
 if (TREF_BUILD_TOOLS)
 	add_subdirectory(tools/trefc)
+    add_subdirectory(tools/gtref)
 endif ()
