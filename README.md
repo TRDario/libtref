@@ -30,7 +30,7 @@ trefc depends on the following external libraries:
 - [stb_image](https://github.com/nothings/stb) (vendored)
 
 gtref depends on the following external libraries:
-- [tr](https://github.com/TRDario/libtr)
+- [libtr](https://github.com/TRDario/libtr)
 - [Dear ImGui](https://github.com/ocornut/imgui) (handled with FetchContent)
 - [tinyfiledialogs](https://sourceforge.net/projects/tinyfiledialogs/) (handled with FetchContent)
 
