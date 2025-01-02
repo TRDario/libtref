@@ -11,6 +11,45 @@ constexpr std::uint32_t GLYPH_OUTLINE_COLOR{0x80FFFFFF};
 
 /// PUBLIC FUNCTIONS ///
 
+FileEdit::FileEdit(const char* cpath)
+{
+	if (cpath != nullptr) {
+		const std::filesystem::path path{cpath};
+
+		std::array<char, 4> buffer;
+		try {
+			std::ifstream file{tr::openFileR(path, std::ios::binary)};
+			tr::readBinary(file, buffer);
+		}
+		catch (std::exception& err) {
+			const std::string message{std::format("Failed to open {}.", path.string())};
+			tinyfd_messageBox("Error - gtref", message.c_str(), "ok", "error", 0);
+			return;
+		}
+
+		if (std::string_view{buffer.data(), 4} == "TREF") {
+			std::optional<LoadResult> loadResult{loadFont(path)};
+			if (loadResult.has_value()) {
+				_file.emplace(*std::move(loadResult));
+				_saved    = _file->font;
+				_path     = path;
+				_filename = _path.filename().string();
+				_file->history.setFilename(_filename);
+				_file->history.setSavePoint();
+			}
+		}
+		else {
+			std::optional<LoadResult> loadResult{loadImage(path)};
+			if (loadResult.has_value()) {
+				_file.emplace(*std::move(loadResult));
+				_filename = "Untitled";
+				_file->history.setFilename(_filename);
+				tr::window().setTitle("Untitled * - gtref");
+			}
+		}
+	}
+}
+
 bool FileEdit::empty() const noexcept
 {
 	return !_file.has_value();

@@ -9,6 +9,9 @@ class Selection;
 // Object representing the "File" and "Edit" menus and their related state.
 class FileEdit {
   public:
+	// Attempts to load a file from the command-line arguments, or if cpath is nullptr load empty.
+	FileEdit(const char* cpath);
+
 	// Returns true if no font is loaded in.
 	bool empty() const noexcept;
 

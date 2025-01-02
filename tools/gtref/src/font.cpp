@@ -9,7 +9,8 @@ std::optional<LoadResult> loadImage(const std::filesystem::path& path) noexcept
 		return {{.font = {.lineSkip = 0, .glyphs = {}}, .image = tr::loadBitmapFile(path)}};
 	}
 	catch (std::exception& err) {
-		tinyfd_messageBox("Error - gtref", err.what(), "ok", "error", 0);
+		const std::string message{std::format("Failed to load image from {}.", path.string())};
+		tinyfd_messageBox("Error - gtref", message.c_str(), "ok", "error", 0);
 		return std::nullopt;
 	}
 }
@@ -24,7 +25,8 @@ std::optional<LoadResult> loadFont(const std::filesystem::path& path) noexcept
 				 .image = tr::Bitmap{image, tr::BitmapFormat::RGBA_8888}}};
 	}
 	catch (std::exception& err) {
-		tinyfd_messageBox("Error - gtref", err.what(), "ok", "error", 0);
+		const std::string message{std::format("Failed to load font from {}.", path.string())};
+		tinyfd_messageBox("Error - gtref", message.c_str(), "ok", "error", 0);
 		return std::nullopt;
 	}
 }
@@ -37,6 +39,7 @@ void saveFont(const std::filesystem::path& path, const Font& font, const tr::Bit
 		tref::encode(file, font.lineSkip, font.glyphs, tref::InputBitmap{bitmap.data(), size.x, size.y});
 	}
 	catch (std::exception& err) {
+		const std::string message{std::format("Failed to save font to {}.", path.string())};
 		tinyfd_messageBox("Error - gtref", err.what(), "ok", "error", 0);
 	}
 }

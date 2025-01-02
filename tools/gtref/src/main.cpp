@@ -8,7 +8,7 @@
 #include <tinyfiledialogs.h>
 #include <tr/imgui.hpp>
 
-tr::Window initialize()
+tr::Window initializeWindow()
 {
 	tr::Window window{"gtref", {800, 600}, tr::CENTERED_POS, tr::WindowFlag::RESIZABLE | tr::WindowFlag::MAXIMIZED};
 	window.events().sendTextInputEvents(true);
@@ -69,12 +69,12 @@ Signal doRedraw(FileEdit& fileEdit, Selection& selection, View& view, Preview& p
 	return Signal::CONTINUE;
 }
 
-int main()
+int main(int, char** argv)
 {
 	try {
-		tr::Window window{initialize()};
+		tr::Window window{initializeWindow()};
 
-		FileEdit  fileEdit;
+		FileEdit  fileEdit{argv[1]};
 		Selection selection;
 		View      view;
 		Preview   preview;
