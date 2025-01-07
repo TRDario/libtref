@@ -176,6 +176,7 @@ std::optional<std::string::const_iterator> parseHex(tref::Codepoint& out, const 
 		print(std::cerr, INVALID_CODEPOINT_MESSAGE, file, errorLine(ctx, start), std::string_view{start, end});
 		return std::nullopt;
 	}
+	return std::next(end)
 }
 
 // Parses a glyph codepoint (Formats: 'a', 0x20, NUL).
@@ -203,12 +204,12 @@ std::optional<std::string::const_iterator> parseGlyphCodepoint(tref::Codepoint& 
 	}
 	else if (std::string_view{start, end} == "NUL") {
 		out = '\0';
+		return std::next(end);
 	}
 	else {
 		print(std::cerr, INVALID_CODEPOINT_MESSAGE, file, errorLine(ctx, start), std::string_view{start, end});
 		return std::nullopt;
 	}
-	return std::next(end);
 }
 
 // Parses a named glyph attribute (x, y, etc...).
