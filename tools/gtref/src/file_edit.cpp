@@ -462,6 +462,7 @@ void FileEdit::saveAs(const std::filesystem::path& path)
 	if (_path != path) {
 		_path     = path;
 		_filename = path.filename().string();
+		_file->history.setFilename(_filename);
 	}
 	_file->history.setSavePoint();
 }
