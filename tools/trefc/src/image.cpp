@@ -21,7 +21,7 @@ constexpr auto IMAGE_LOADING_FAILURE_MESSAGE{
 	" failed to load image from '{}' ({})\n"};
 
 Bitmap::Bitmap(const void* data, unsigned int width, unsigned int height) noexcept
-	: InputBitmap{data, width, height}
+	: BitmapRef{data, width, height}
 {
 }
 

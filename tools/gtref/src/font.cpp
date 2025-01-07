@@ -40,7 +40,7 @@ void saveFont(const std::filesystem::path& path, const Font& font, const tr::Bit
 	try {
 		std::ofstream file{tr::openFileW(path, std::ios::binary)};
 		glm::uvec2    size{bitmap.size()};
-		tref::encode(file, font.lineSkip, font.glyphs, tref::InputBitmap{bitmap.data(), size.x, size.y});
+		tref::encode(file, font.lineSkip, font.glyphs, tref::BitmapRef{bitmap.data(), size.x, size.y});
 	}
 	catch (std::exception& err) {
 		const std::string message{std::format("Failed to save font to {}.", path.string())};

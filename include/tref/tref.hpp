@@ -57,7 +57,7 @@ namespace tref {
 	/******************************************************************************************************************
 	 * Simple bitmap class used for output.
 	 ******************************************************************************************************************/
-	class OutputBitmap {
+	class DecodedBitmap {
 	  public:
 		/**************************************************************************************************************
 		 * Constructs a bitmap from existing data.
@@ -66,17 +66,17 @@ namespace tref {
 		 * @param width The bitmap width.
 		 * @param height The bitmap height.
 		 **************************************************************************************************************/
-		OutputBitmap(std::byte* data, unsigned int width, unsigned int height) noexcept;
+		DecodedBitmap(std::byte* data, unsigned int width, unsigned int height) noexcept;
 
 		/**************************************************************************************************************
 		 * Deallocates the bitmap.
 		 **************************************************************************************************************/
-		~OutputBitmap() noexcept;
+		~DecodedBitmap() noexcept;
 
 		/**************************************************************************************************************
 		 * Gets the bitmap's data.
 		 *
-		 * @return The bitmap's data. The data is encoded in RGBA8 format.
+		 * @return The bitmap's data. The data is encoded in 32bbp RGBA format.
 		 **************************************************************************************************************/
 		std::span<const std::byte> data() const noexcept;
 
@@ -124,7 +124,7 @@ namespace tref {
 		/**************************************************************************************************************
 		 * The font bitmap data.
 		 **************************************************************************************************************/
-		OutputBitmap bitmap;
+		DecodedBitmap bitmap;
 	};
 
 	/******************************************************************************************************************
@@ -143,7 +143,7 @@ namespace tref {
 	/******************************************************************************************************************
 	 * Struct containing data about the bitmap to encode into a tref file.
 	 ******************************************************************************************************************/
-	struct InputBitmap {
+	struct BitmapRef {
 		/**************************************************************************************************************
 		 * Pointer to the beginning of the bitmap data.
 		 **************************************************************************************************************/
@@ -172,7 +172,7 @@ namespace tref {
 	 * @param[in] glyphs The font glyph data.
 	 * @param[in] bitmap The font bitmap data.
 	 ******************************************************************************************************************/
-	void encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyphs, const InputBitmap& bitmap);
+	void encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyphs, const BitmapRef& bitmap);
 
 	/// @}
 } // namespace tref
