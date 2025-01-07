@@ -1,5 +1,5 @@
-#include "../include/file_edit.hpp"
 #include "../include/selection.hpp"
+#include "../include/file_edit.hpp"
 #include <imgui.h>
 
 /// PUBLIC FUNCTIONS ///
@@ -78,24 +78,24 @@ void Selection::addMenu(const FileEdit& fileEdit)
 
 void Selection::selectNext(const FileEdit& fileEdit)
 {
-	const auto minmax{std::ranges::minmax_element(fileEdit.glyphs() | std::views::keys)};
+	const auto minmax{rs::minmax_element(fileEdit.glyphs() | std::views::keys)};
 	if (_state == State::EMPTY || _cp == *minmax.max) {
 		setStale(*minmax.min);
 	}
 	else {
 		const auto range{std::views::iota(_cp + 1, *minmax.max)};
-		setStale(*std::ranges::find_if(range, [&](tref::Codepoint cp) { return fileEdit.glyphs().contains(cp); }));
+		setStale(*rs::find_if(range, [&](tref::Codepoint cp) { return fileEdit.glyphs().contains(cp); }));
 	}
 }
 
 void Selection::selectPrevious(const FileEdit& fileEdit)
 {
-	const auto minmax{std::ranges::minmax_element(fileEdit.glyphs() | std::views::keys)};
+	const auto minmax{rs::minmax_element(fileEdit.glyphs() | std::views::keys)};
 	if (_state == State::EMPTY || _cp == *minmax.min) {
 		setStale(*minmax.max);
 	}
 	else {
 		const auto range{std::views::iota(*minmax.min, _cp) | std::views::reverse};
-		setStale(*std::ranges::find_if(range, [&](tref::Codepoint cp) { return fileEdit.glyphs().contains(cp); }));
+		setStale(*rs::find_if(range, [&](tref::Codepoint cp) { return fileEdit.glyphs().contains(cp); }));
 	}
 }

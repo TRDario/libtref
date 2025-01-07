@@ -49,25 +49,3 @@ Expected<Bitmap, ErrorCode> loadBitmap(std::string_view path);
 ///
 
 ErrorCode writeToOutput(std::string_view path, const FontInfo& fontInfo, const Bitmap& bitmap);
-
-///
-
-constexpr auto FILE_NOT_FOUND_MESSAGE{
-#ifdef TREFC_ANSI_COLORS
-	"\x1b[1;91m"
-#endif
-	"error:"
-#ifdef TREFC_ANSI_COLORS
-	"\x1b[0m"
-#endif
-	" file '{}' not found\n"};
-
-constexpr auto FILE_OPENING_FAILURE_MESSAGE{
-#ifdef TREFC_ANSI_COLORS
-	"\x1b[1;91m"
-#endif
-	"error:"
-#ifdef TREFC_ANSI_COLORS
-	"\x1b[0m"
-#endif
-	" failed to open file '{}'\n"};
