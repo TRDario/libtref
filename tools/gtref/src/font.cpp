@@ -6,7 +6,11 @@
 std::optional<LoadResult> loadImage(const std::filesystem::path& path) noexcept
 {
 	try {
-		return {{.font = {.lineSkip = 0, .glyphs = {{'\0', {}}}}, .image = tr::loadBitmapFile(path)}};
+		tr::Bitmap bitmap{tr::loadBitmapFile(path)};
+		if (bitmap.format() != tr::BitmapFormat::ARGB_8888) {
+			bitmap = tr::Bitmap{bitmap, tr::BitmapFormat::ARGB_8888};
+		}
+		return {{.font = {.lineSkip = 0, .glyphs = {{'\0', {}}}}, .image = std::move(bitmap)}};
 	}
 	catch (std::exception& err) {
 		const std::string message{std::format("Failed to load image from {}.", path.string())};
@@ -20,9 +24,9 @@ std::optional<LoadResult> loadFont(const std::filesystem::path& path) noexcept
 	try {
 		std::ifstream file{tr::openFileR(path, std::ios::binary)};
 		const auto [lineSkip, glyphs, bitmap]{tref::decode(file)};
-		const tr::BitmapView image{bitmap.data(), {bitmap.width(), bitmap.height()}, tr::BitmapFormat::RGBA_8888};
+		const tr::BitmapView image{bitmap.data(), {bitmap.width(), bitmap.height()}, tr::BitmapFormat::ARGB_8888};
 		return {{.font  = {.lineSkip = lineSkip, .glyphs = std::move(glyphs)},
-				 .image = tr::Bitmap{image, tr::BitmapFormat::RGBA_8888}}};
+				 .image = tr::Bitmap{image, tr::BitmapFormat::ARGB_8888}}};
 	}
 	catch (std::exception& err) {
 		const std::string message{std::format("Failed to load font from {}.", path.string())};
