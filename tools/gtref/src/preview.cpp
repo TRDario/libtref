@@ -1,5 +1,5 @@
-#include "../include/preview.hpp"
 #include "../include/file_edit.hpp"
+#include "../include/preview.hpp"
 #include <imgui.h>
 #include <tr/imgui.hpp>
 
@@ -28,14 +28,14 @@ void Preview::addPreviewWindow(const FileEdit& fileEdit)
 		return;
 	}
 
-	const std::string_view text{_previewTextBuffer.data()};
-	const TextBounds       bounds{findTextBounds(fileEdit)};
-	const float            windowWidth{bounds.max.x - bounds.min.x};
+	const TextBounds bounds{findTextBounds(fileEdit)};
+	const float      windowWidth{bounds.max.x - bounds.min.x};
 
 	if (ImGui::Begin("Preview", &_previewWindowActive,
 					 ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse)) {
-		const float inputHeight{ImGui::GetTextLineHeightWithSpacing() *
-								std::max(2.0f, std::ranges::count(text, '\n') + 1.0f)};
+		const float inputHeight{
+			ImGui::GetTextLineHeightWithSpacing() *
+			std::max(2.0f, std::ranges::count(std::string_view{_previewTextBuffer.data()}, '\n') + 1.0f)};
 		ImGui::InputTextMultiline("##Preview Text", _previewTextBuffer.data(), 126, {windowWidth, inputHeight});
 		ImGui::Separator();
 
@@ -44,7 +44,7 @@ void Preview::addPreviewWindow(const FileEdit& fileEdit)
 							  ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar)) {
 			int line{0};
 			int x{0};
-			for (tref::Codepoint cp : tr::utf8Range(text)) {
+			for (tref::Codepoint cp : tr::utf8Range(std::string_view{_previewTextBuffer.data()})) {
 				drawGlyph(fileEdit, cp, bounds, line, x);
 			}
 		}
