@@ -34,7 +34,8 @@ void Preview::addPreviewWindow(const FileEdit& fileEdit)
 
 	if (ImGui::Begin("Preview", &_previewWindowActive,
 					 ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse)) {
-		const float inputHeight{ImGui::GetTextLineHeightWithSpacing() * std::max(2.0f, rs::count(text, '\n') + 1.0f)};
+		const float inputHeight{ImGui::GetTextLineHeightWithSpacing() *
+								std::max(2.0f, std::ranges::count(text, '\n') + 1.0f)};
 		ImGui::InputTextMultiline("##Preview Text", _previewTextBuffer.data(), 126, {windowWidth, inputHeight});
 		ImGui::Separator();
 
@@ -59,7 +60,7 @@ Preview::TextBounds Preview::findTextBounds(const FileEdit& fileEdit) const noex
 	const std::string_view text{_previewTextBuffer.data()};
 	const int              lineSkip{fileEdit.lineSkip()};
 
-	TextBounds bounds{{0, 0}, {256, fileEdit.lineSkip() * (rs::count(text, '\n') + 1)}};
+	TextBounds bounds{{0, 0}, {256, fileEdit.lineSkip() * (std::ranges::count(text, '\n') + 1)}};
 
 	int line{0};
 	int x{0};

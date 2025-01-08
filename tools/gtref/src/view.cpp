@@ -123,7 +123,7 @@ void View::addZoomControl() noexcept
 void View::zoomIn() noexcept
 {
 	// Cannot just do next like in zoomOut because it would skip in the case of *it != _zoom.
-	auto it{rs::lower_bound(ZOOM_LEVELS, _zoom)};
+	auto it{std::ranges::lower_bound(ZOOM_LEVELS, _zoom)};
 	if (*it == _zoom) {
 		++it;
 	}
@@ -135,7 +135,7 @@ void View::zoomIn() noexcept
 
 void View::zoomOut() noexcept
 {
-	auto next{*std::prev(rs::lower_bound(ZOOM_LEVELS, _zoom))};
+	auto next{*std::prev(std::ranges::lower_bound(ZOOM_LEVELS, _zoom))};
 	if (next != -INFINITY) {
 		setZoom(next);
 	}

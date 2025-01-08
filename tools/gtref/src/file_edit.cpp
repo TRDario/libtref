@@ -532,7 +532,7 @@ void FileEdit::insertGlyph(Selection& selection)
 {
 	GTREF_ASSERT(!empty());
 
-	tref::Codepoint cp{*rs::find_if(std::views::iota(0U), [&](auto cp) { return !glyphs().contains(cp); })};
+	tref::Codepoint cp{*std::ranges::find_if(std::views::iota(0U), [&](auto cp) { return !glyphs().contains(cp); })};
 
 	_file->history.addEdit(History::GlyphAddition{cp});
 	_file->font.glyphs.emplace(cp, tref::Glyph{});
