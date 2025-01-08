@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['x_0',['x',['../structtref_1_1Glyph.html#aa1ed877e9dbb68da69795bd93c7ead18',1,'tref::Glyph']]],
-  ['xoffset_1',['xOffset',['../structtref_1_1Glyph.html#a4967a7e8448e393a8d60fa620fa0c142',1,'tref::Glyph']]]
+  ['y_0',['y',['../structtref_1_1Glyph.html#a54a0b5e6a5c57e59ceeb9a5a314ae8aa',1,'tref::Glyph']]],
+  ['yoffset_1',['yOffset',['../structtref_1_1Glyph.html#aa75d5f30f71d64211a20df172ad2c772',1,'tref::Glyph']]]
 ];

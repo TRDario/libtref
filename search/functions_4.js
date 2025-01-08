@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758',1,'tref::OutputBitmap']]]
+  ['_7edecodedbitmap_0',['~DecodedBitmap',['../classtref_1_1DecodedBitmap.html#a9a4a5382ab1a3aff3090c98f2b68e929',1,'tref::DecodedBitmap']]]
 ];

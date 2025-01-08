@@ -1,8 +1,20 @@
 var group__tref =
 [
+    [ "tref::BitmapRef", "structtref_1_1BitmapRef.html", [
+      [ "data", "structtref_1_1BitmapRef.html#aa9d69528671fce36954aee1ec20e80c1", null ],
+      [ "height", "structtref_1_1BitmapRef.html#a92235ae7bae298f0ddfa7b5640e9561a", null ],
+      [ "width", "structtref_1_1BitmapRef.html#abd952611a027f609a2afac468d71b938", null ]
+    ] ],
+    [ "tref::DecodedBitmap", "classtref_1_1DecodedBitmap.html", [
+      [ "DecodedBitmap", "classtref_1_1DecodedBitmap.html#a9f879b2cfcbfa9a015bec3b0c5e89621", null ],
+      [ "~DecodedBitmap", "classtref_1_1DecodedBitmap.html#a9a4a5382ab1a3aff3090c98f2b68e929", null ],
+      [ "data", "classtref_1_1DecodedBitmap.html#aa598589b2af0a4d2107a1a77f2f2aca7", null ],
+      [ "height", "classtref_1_1DecodedBitmap.html#a7ea182f5a59cacfd40dfeb4046b9ee8e", null ],
+      [ "width", "classtref_1_1DecodedBitmap.html#aeba2825eea480e0ed3cd8488a3838c27", null ]
+    ] ],
     [ "tref::DecodingError", "structtref_1_1DecodingError.html", null ],
     [ "tref::DecodingResult", "structtref_1_1DecodingResult.html", [
-      [ "bitmap", "structtref_1_1DecodingResult.html#ab69b1d71eaea4636ffcae79b3993508f", null ],
+      [ "bitmap", "structtref_1_1DecodingResult.html#a5a314fa795e887c5376166bf2cd56811", null ],
       [ "glyphs", "structtref_1_1DecodingResult.html#ac51e6df153b2e5a89ccf08dc70752f59", null ],
       [ "lineSkip", "structtref_1_1DecodingResult.html#a08a587676defd20ba770f244622c9da0", null ]
     ] ],
@@ -17,20 +29,8 @@ var group__tref =
       [ "y", "structtref_1_1Glyph.html#a54a0b5e6a5c57e59ceeb9a5a314ae8aa", null ],
       [ "yOffset", "structtref_1_1Glyph.html#aa75d5f30f71d64211a20df172ad2c772", null ]
     ] ],
-    [ "tref::InputBitmap", "structtref_1_1InputBitmap.html", [
-      [ "data", "structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc", null ],
-      [ "height", "structtref_1_1InputBitmap.html#a6b14bf4a2ad6389292410d43cbdac6c1", null ],
-      [ "width", "structtref_1_1InputBitmap.html#a99ee88ce5aee5e0272e7a86fb6a592ff", null ]
-    ] ],
-    [ "tref::OutputBitmap", "classtref_1_1OutputBitmap.html", [
-      [ "OutputBitmap", "classtref_1_1OutputBitmap.html#a60ec0852dc12150a7ff77136e1dfa37c", null ],
-      [ "~OutputBitmap", "classtref_1_1OutputBitmap.html#a9acc4ed37d9b36f305f0c54cb880486b", null ],
-      [ "data", "classtref_1_1OutputBitmap.html#a77986563756a30d3d7853c89735bd83f", null ],
-      [ "height", "classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af", null ],
-      [ "width", "classtref_1_1OutputBitmap.html#a25ee354a77b5cf973610e81d079d7758", null ]
-    ] ],
     [ "tref::Codepoint", "group__tref.html#ga3ed10c86c2d7182e5cef78dbcc97ef8c", null ],
     [ "tref::GlyphMap", "group__tref.html#ga00af86d01e676fd70d1981e6c5cf2e4c", null ],
     [ "tref::decode", "group__tref.html#gac3845810d7c5081c97f2a23c2691b3b7", null ],
-    [ "tref::encode", "group__tref.html#gab72614ce7946ed6c0574f962c4748d04", null ]
+    [ "tref::encode", "group__tref.html#gaf1e76871d6f98e7db0233c35f61635da", null ]
 ];

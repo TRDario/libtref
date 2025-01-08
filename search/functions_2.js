@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['height_0',['height',['../classtref_1_1OutputBitmap.html#a46d83f53b4e2e8170e8186b55a6170af',1,'tref::OutputBitmap']]]
+  ['height_0',['height',['../classtref_1_1DecodedBitmap.html#a7ea182f5a59cacfd40dfeb4046b9ee8e',1,'tref::DecodedBitmap']]]
 ];

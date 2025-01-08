@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_0',['data',['../structtref_1_1InputBitmap.html#acbd44285b84ffc2b84d7d0c67460aefc',1,'tref::InputBitmap']]]
+  ['data_0',['data',['../structtref_1_1BitmapRef.html#aa9d69528671fce36954aee1ec20e80c1',1,'tref::BitmapRef']]]
 ];
