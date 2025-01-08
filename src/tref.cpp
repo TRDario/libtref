@@ -88,7 +88,7 @@ void tref::encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyph
 		throw EncodingError{"Failed to encode QOI data."};
 	}
 
-	std::stringstream buffer{std::ios::binary};
+	std::ostringstream buffer{std::ios::binary};
 	writeBinary(buffer, lineSkip);
 	writeBinary(buffer, std::uint32_t(glyphs.size()));
 	for (auto& [cp, glyph] : glyphs) {
