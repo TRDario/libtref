@@ -297,11 +297,10 @@ bool FileEdit::close(Selection& selection) noexcept
 /// INTERNAL FUNCTIONS ///
 
 FileEdit::File::File(LoadResult&& loadResult)
-	: font{std::move(loadResult.font)}
-	, bitmap{std::move(loadResult.image)}
-	, texture{bitmap, tr::ALL_MIPMAPS, tr::TextureFormat::RGBA8}
+	: font{std::move(loadResult.font)}, bitmap{std::move(loadResult.image)}, texture{bitmap, true}
 {
-	tr::ImGui::setTextureFilter(texture, tr::MinFilter::LMIPS_LINEAR, tr::MagFilter::NEAREST);
+	texture.setMinFilter(tr::MinFilter::LMIPS_LINEAR);
+	texture.setMagFilter(tr::MagFilter::NEAREST);
 }
 
 void FileEdit::handleArrowKeys(Selection& selection)

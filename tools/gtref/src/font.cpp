@@ -25,7 +25,7 @@ std::optional<LoadResult> loadFont(const std::filesystem::path& path) noexcept
 		std::ifstream file{tr::openFileR(path, std::ios::binary)};
 		const auto [lineSkip, glyphs, bitmap]{tref::decode(file)};
 		const tr::BitmapView image{bitmap.data(), {bitmap.width(), bitmap.height()}, tr::BitmapFormat::ARGB_8888};
-		return LoadResult{{.lineSkip = lineSkip, .glyphs = std::move(glyphs)}, {image, tr::BitmapFormat::ARGB_8888}};
+		return LoadResult{{lineSkip, std::move(glyphs)}, tr::Bitmap{image, tr::BitmapFormat::ARGB_8888}};
 	}
 	catch (std::exception& err) {
 		const std::string message{std::format("Failed to load font from {}.", path.string())};
