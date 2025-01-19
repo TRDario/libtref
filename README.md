@@ -30,11 +30,12 @@ trefc depends on the following external libraries:
 - [stb_image](https://github.com/nothings/stb) (vendored)
 
 gtref depends on the following external libraries:
+
 - [libtr](https://github.com/TRDario/libtr)
 - [Dear ImGui](https://github.com/ocornut/imgui) (handled with FetchContent)
 - [tinyfiledialogs](https://sourceforge.net/projects/tinyfiledialogs/) (handled with FetchContent)
 
 ## License
 
-libtref is licensed under the MIT license, see [here](https://github.com/TRDario/libtr/blob/main/LICENSE).
+libtref, trefc and gtref are licensed under the MIT license, see [here](https://github.com/TRDario/libtr/blob/main/LICENSE).
 Vendored external libraries used by libtref and its tools are distributed under their respective licenses.
