@@ -32,8 +32,12 @@ unsigned int tref::DecodedBitmap::height() const noexcept
 	return _height;
 }
 
-template <class T> T readBinary(char*& ptr) noexcept
+template <class T> T readBinary(const std::byte*& ptr, const std::byte* end)
 {
+	if ((end - ptr) < static_cast<std::ptrdiff_t>(sizeof(T))) {
+		throw tref::DecodingError{"Invalid .tref file."};
+	}
+
 	T value;
 	std::memcpy(&value, ptr, sizeof(T));
 	ptr += sizeof(T);
@@ -42,38 +46,44 @@ template <class T> T readBinary(char*& ptr) noexcept
 
 template <class T> void writeBinary(std::ostream& os, const T& value) noexcept
 {
-	os.write((const char*)(&value), sizeof(value));
+	os.write(reinterpret_cast<const char*>(&value), sizeof(value));
 }
 
-tref::DecodingResult tref::decode(std::istream& is)
+template <class T> void writeBinaryRange(std::ostream& os, const T& range) noexcept
 {
-	char magic[4];
-	is.read(magic, sizeof(magic));
-	if (std::string_view{magic, sizeof(magic)} != "TREF") {
+	os.write(reinterpret_cast<const char*>(range.data()), range.size());
+}
+
+tref::DecodingResult tref::decode(std::span<const std::byte> data)
+{
+	const std::byte* it{data.data()};
+	const std::byte* end{data.data() + data.size()};
+
+	if (std::string_view{readBinary<std::array<char, 4>>(it, end).data(), 4} != "TREF") {
 		throw DecodingError{"Invalid .tref file header."};
 	}
 
-	std::uint32_t rawSize;
-	is.read((char*)(&rawSize), sizeof(rawSize));
-	std::vector<char> raw(rawSize);
-	std::vector<char> lz4{std::istreambuf_iterator<char>{is}, std::istreambuf_iterator<char>{}};
-	const int         reportedSize{LZ4_decompress_safe(lz4.data(), raw.data(), lz4.size(), raw.size())};
-	if (std::uint32_t(reportedSize) != rawSize) {
-		throw DecodingError{"LZ4 decompression of tref file failed."};
+	std::vector<std::byte> raw(readBinary<std::uint32_t>(it, end));
+	std::vector<std::byte> lz4{it, end};
+	const int              reportedSize{LZ4_decompress_safe(reinterpret_cast<const char*>(lz4.data()),
+															reinterpret_cast<char*>(raw.data()), lz4.size(), raw.size())};
+	if (static_cast<std::uint32_t>(reportedSize) != raw.size()) {
+		throw DecodingError{"Decompression of .tref file failed."};
 	}
-	char* it{raw.data()};
+	it  = raw.data();
+	end = raw.data() + raw.size();
 
-	const std::int32_t  lineSkip{readBinary<std::int32_t>(it)};
-	const std::uint32_t count{readBinary<std::uint32_t>(it)};
+	const std::int32_t  lineSkip{readBinary<std::int32_t>(it, end)};
+	const std::uint32_t count{readBinary<std::uint32_t>(it, end)};
 	GlyphMap            glyphs;
 	for (std::uint32_t i = 0; i < count; ++i) {
-		glyphs.emplace(readBinary<Codepoint>(it), readBinary<Glyph>(it));
+		glyphs.emplace(readBinary<Codepoint>(it, end), readBinary<Glyph>(it, end));
 	}
 
 	qoi_desc   desc;
-	std::byte* bitmap{(std::byte*)(qoi_decode(it, std::distance(it, raw.data() + raw.size()), &desc, 4))};
+	std::byte* bitmap{static_cast<std::byte*>(qoi_decode(it, std::distance(it, end), &desc, 4))};
 	if (bitmap == nullptr) {
-		throw DecodingError{"Failed to decode QOI data."};
+		throw DecodingError{"Failed to decode .tref file image data."};
 	}
 
 	return DecodingResult{lineSkip, std::move(glyphs), DecodedBitmap{bitmap, desc.width, desc.height}};
@@ -81,30 +91,31 @@ tref::DecodingResult tref::decode(std::istream& is)
 
 void tref::encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyphs, const BitmapRef& bitmap)
 {
-	const qoi_desc desc{bitmap.width, bitmap.height, 4, QOI_SRGB};
-	int            bitmapSize;
-	const char*    qoi{(const char*)(qoi_encode(bitmap.data, &desc, &bitmapSize))};
-	if (qoi == nullptr) {
-		throw EncodingError{"Failed to encode QOI data."};
+	const qoi_desc             desc{bitmap.width, bitmap.height, 4, QOI_SRGB};
+	int                        size;
+	std::span<const std::byte> qoi{static_cast<const std::byte*>(qoi_encode(bitmap.data, &desc, &size)),
+								   static_cast<std::size_t>(size)};
+	if (qoi.data() == nullptr) {
+		throw EncodingError{"Failed to encode .tref file image data."};
 	}
 
 	std::ostringstream buffer{std::ios::binary};
 	writeBinary(buffer, lineSkip);
-	writeBinary(buffer, std::uint32_t(glyphs.size()));
+	writeBinary(buffer, static_cast<std::uint32_t>(glyphs.size()));
 	for (auto& [cp, glyph] : glyphs) {
 		writeBinary(buffer, cp);
 		writeBinary(buffer, glyph);
 	}
-	buffer.write(qoi, bitmapSize);
+	writeBinaryRange(os, qoi);
 
 	const std::string raw{std::move(buffer).str()};
 	if (raw.size() > LZ4_MAX_INPUT_SIZE) {
-		throw EncodingError{"File is too large to encode."};
+		throw EncodingError{".tref file is too large to encode."};
 	}
-	std::vector<char> lz4(LZ4_compressBound(raw.size()));
-	lz4.resize(LZ4_compress_default(raw.c_str(), lz4.data(), raw.size(), lz4.size()));
+	std::vector<std::byte> lz4(LZ4_compressBound(raw.size()));
+	lz4.resize(LZ4_compress_default(raw.c_str(), reinterpret_cast<char*>(lz4.data()), raw.size(), lz4.size()));
 
 	os.write("TREF", 4);
-	writeBinary(os, std::uint32_t(raw.size()));
-	os.write(lz4.data(), lz4.size());
+	writeBinary(os, static_cast<std::uint32_t>(raw.size()));
+	writeBinaryRange(os, lz4);
 }

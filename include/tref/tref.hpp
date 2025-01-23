@@ -128,15 +128,15 @@ namespace tref {
 	};
 
 	/******************************************************************************************************************
-	 * Decodes a tref file from a stream.
+	 * Decodes a tref file from a data span.
 	 *
 	 * @exception DecodingError If decoding the data fails.
 	 *
-	 * @param[in] is The input data stream.
+	 * @param[in] data The input data.
 	 *
 	 * @return The font information.
 	 ******************************************************************************************************************/
-	DecodingResult decode(std::istream& is);
+	DecodingResult decode(std::span<const std::byte> data);
 
 	///
 
@@ -147,7 +147,7 @@ namespace tref {
 		/**************************************************************************************************************
 		 * Pointer to the beginning of the bitmap data.
 		 **************************************************************************************************************/
-		const void* data;
+		const std::byte* data;
 
 		/**************************************************************************************************************
 		 * The size of the bitmap.
