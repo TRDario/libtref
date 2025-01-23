@@ -106,7 +106,7 @@ void tref::encode(std::ostream& os, std::int32_t lineSkip, const GlyphMap& glyph
 		writeBinary(buffer, cp);
 		writeBinary(buffer, glyph);
 	}
-	writeBinaryRange(os, qoi);
+	writeBinaryRange(buffer, qoi);
 
 	const std::string raw{std::move(buffer).str()};
 	if (raw.size() > LZ4_MAX_INPUT_SIZE) {
