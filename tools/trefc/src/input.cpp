@@ -116,31 +116,29 @@ std::optional<std::string::const_iterator> parseNamedInt(T& out, const std::stri
 // Converts a UTF8 sequence to a Unicode codepoint.
 std::optional<tref::Codepoint> utf8ToCodepoint(std::string_view span) noexcept
 {
+	std::span<const std::uint8_t> c{reinterpret_cast<const std::uint8_t*>(span.data()), span.size()};
+
 	switch (span.size()) {
 	case 1:
-		if (std::uint8_t(span[0]) >= 0x80) {
+		if (c[0] >= 0x80) {
 			return std::nullopt;
 		}
 		return span[0];
 	case 2:
-		if ((std::uint8_t(span[0]) & 0xE0) != 0xC0 || (std::uint8_t(span[1]) & 0xC0) != 0x80) {
+		if ((c[0] & 0xE0) != 0xC0 || (c[1] & 0xC0) != 0x80) {
 			return std::nullopt;
 		}
-		return ((std::uint8_t(span[0]) & 0x1F) << 6) + (std::uint8_t(span[1]) & 0x3F);
+		return ((c[0] & 0x1F) << 6) + (c[1] & 0x3F);
 	case 3:
-		if ((std::uint8_t(span[0]) & 0xF0) != 0xE0 || (std::uint8_t(span[1]) & 0xC0) != 0x80 ||
-			(std::uint8_t(span[2]) & 0xC0) != 0x80) {
+		if ((c[0] & 0xF0) != 0xE0 || (c[1] & 0xC0) != 0x80 || (c[2] & 0xC0) != 0x80) {
 			return std::nullopt;
 		}
-		return ((std::uint8_t(span[0]) & 0xF) << 12) + ((std::uint8_t(span[1]) & 0x3F) << 6) +
-			   (std::uint8_t(span[2]) & 0x3F);
+		return ((c[0] & 0xF) << 12) + ((c[1] & 0x3F) << 6) + (c[2] & 0x3F);
 	case 4:
-		if ((std::uint8_t(span[0]) & 0xF8) != 0xF0 || (std::uint8_t(span[1]) & 0xC0) != 0x80 ||
-			(std::uint8_t(span[2]) & 0xC0) != 0x80 || (std::uint8_t(span[3]) & 0xC0) != 0x80) {
+		if ((c[0] & 0xF8) != 0xF0 || (c[1] & 0xC0) != 0x80 || (c[2] & 0xC0) != 0x80 || (c[3] & 0xC0) != 0x80) {
 			return std::nullopt;
 		}
-		return ((std::uint8_t(span[0]) & 0x7) << 18) + ((std::uint8_t(span[1]) & 0x3F) << 12) +
-			   ((std::uint8_t(span[2]) & 0x3F) << 6) + (std::uint8_t(span[3]) & 0x3F);
+		return ((c[0] & 0x7) << 18) + ((c[1] & 0x3F) << 12) + ((c[2] & 0x3F) << 6) + (c[3] & 0x3F);
 	default:
 		return std::nullopt;
 	}
@@ -172,7 +170,7 @@ std::optional<std::string::const_iterator> parseUnicode(tref::Codepoint& out, co
 std::optional<std::string::const_iterator> parseHex(tref::Codepoint& out, const std::string& ctx, std::string_view file,
 													std::string::const_iterator start, std::string::const_iterator end)
 {
-	if (std::from_chars(std::to_address(start + 2), std::to_address(end), out, 16).ec != std::errc()) {
+	if (std::from_chars(std::to_address(start + 2), std::to_address(end), out, 16).ec != std::errc{}) {
 		print(std::cerr, INVALID_CODEPOINT_MESSAGE, file, errorLine(ctx, start), std::string_view{start, end});
 		return std::nullopt;
 	}

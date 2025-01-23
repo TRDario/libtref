@@ -11,14 +11,14 @@
 #define STBI_NO_PNM
 #include "../include/stb_image.h"
 
-Bitmap::Bitmap(const void* data, unsigned int width, unsigned int height) noexcept
+Bitmap::Bitmap(const std::byte* data, unsigned int width, unsigned int height) noexcept
 	: BitmapRef{data, width, height}
 {
 }
 
 Bitmap::~Bitmap() noexcept
 {
-	stbi_image_free((void*)(data));
+	stbi_image_free(const_cast<std::byte*>(data));
 }
 
 Expected<Bitmap, ErrorCode> loadBitmap(std::string_view path)
@@ -28,13 +28,13 @@ Expected<Bitmap, ErrorCode> loadBitmap(std::string_view path)
 		return FILE_NOT_FOUND;
 	}
 
-	int         width, height, channels;
-	const void* bitmapData{stbi_load(path.data(), &width, &height, &channels, 4)};
-	if (bitmapData == nullptr) {
+	int              w, h, channels;
+	const std::byte* data{reinterpret_cast<const std::byte*>(stbi_load(path.data(), &w, &h, &channels, 4))};
+	if (data == nullptr) {
 		print(std::cerr, IMAGE_LOADING_FAILURE_MESSAGE, path, stbi_failure_reason());
 		return IMAGE_FAILURE;
 	}
 	else {
-		return Expected<Bitmap, ErrorCode>{std::in_place_type<Bitmap>, bitmapData, width, height};
+		return Expected<Bitmap, ErrorCode>{std::in_place_type<Bitmap>, data, w, h};
 	}
 }
