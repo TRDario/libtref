@@ -8,6 +8,6 @@ var namespacetref =
     [ "Glyph", "structtref_1_1Glyph.html", "structtref_1_1Glyph" ],
     [ "Codepoint", "group__tref.html#ga3ed10c86c2d7182e5cef78dbcc97ef8c", null ],
     [ "GlyphMap", "group__tref.html#ga00af86d01e676fd70d1981e6c5cf2e4c", null ],
-    [ "decode", "group__tref.html#gac3845810d7c5081c97f2a23c2691b3b7", null ],
+    [ "decode", "group__tref.html#ga496bb61655da8a5ea492cad8dc36bcf5", null ],
     [ "encode", "group__tref.html#gaf1e76871d6f98e7db0233c35f61635da", null ]
 ];

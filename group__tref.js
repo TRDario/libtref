@@ -1,7 +1,7 @@
 var group__tref =
 [
     [ "tref::BitmapRef", "structtref_1_1BitmapRef.html", [
-      [ "data", "structtref_1_1BitmapRef.html#aa9d69528671fce36954aee1ec20e80c1", null ],
+      [ "data", "structtref_1_1BitmapRef.html#af9b6241766215cb794b0eff5c54493c0", null ],
       [ "height", "structtref_1_1BitmapRef.html#a92235ae7bae298f0ddfa7b5640e9561a", null ],
       [ "width", "structtref_1_1BitmapRef.html#abd952611a027f609a2afac468d71b938", null ]
     ] ],
@@ -31,6 +31,6 @@ var group__tref =
     ] ],
     [ "tref::Codepoint", "group__tref.html#ga3ed10c86c2d7182e5cef78dbcc97ef8c", null ],
     [ "tref::GlyphMap", "group__tref.html#ga00af86d01e676fd70d1981e6c5cf2e4c", null ],
-    [ "tref::decode", "group__tref.html#gac3845810d7c5081c97f2a23c2691b3b7", null ],
+    [ "tref::decode", "group__tref.html#ga496bb61655da8a5ea492cad8dc36bcf5", null ],
     [ "tref::encode", "group__tref.html#gaf1e76871d6f98e7db0233c35f61635da", null ]
 ];
