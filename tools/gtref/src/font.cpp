@@ -22,8 +22,9 @@ std::optional<LoadResult> loadImage(const std::filesystem::path& path) noexcept
 std::optional<LoadResult> loadFont(const std::filesystem::path& path) noexcept
 {
 	try {
-		std::ifstream file{tr::openFileR(path, std::ios::binary)};
-		const auto [lineSkip, glyphs, bitmap]{tref::decode(file)};
+		std::ifstream           file{tr::openFileR(path, std::ios::binary)};
+		const std::vector<char> buffer{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
+		const auto [lineSkip, glyphs, bitmap]{tref::decode(tr::rangeBytes(buffer))};
 		const tr::BitmapView image{bitmap.data(), {bitmap.width(), bitmap.height()}, tr::BitmapFormat::ARGB_8888};
 		return LoadResult{{lineSkip, std::move(glyphs)}, tr::Bitmap{image, tr::BitmapFormat::ARGB_8888}};
 	}

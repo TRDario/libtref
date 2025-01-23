@@ -235,8 +235,8 @@ void FileEdit::addGlyphPropertiesEditor(Selection& selection)
 	tref::Codepoint cpEdit{selection.value()};
 	tref::Glyph     glyphEdit{glyphs().at(selection.value())};
 	ImGui::SameLine();
-	if (ImGui::BeginChild("Glyph Properties", ImVec2(300, -ImGui::GetTextLineHeightWithSpacing()),
-						  ImGuiChildFlags_Borders, ImGuiWindowFlags_NoMove)) {
+	if (ImGui::BeginChild("Glyph Properties", {300, -ImGui::GetTextLineHeightWithSpacing()}, ImGuiChildFlags_Borders,
+						  ImGuiWindowFlags_NoMove)) {
 		ImGui::SeparatorText("Glyph Properties");
 		ImGui::PushItemWidth(185);
 		addCodepointEditor(selection, cpEdit);

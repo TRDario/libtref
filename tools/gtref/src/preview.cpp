@@ -1,5 +1,5 @@
-#include "../include/file_edit.hpp"
 #include "../include/preview.hpp"
+#include "../include/file_edit.hpp"
 #include <imgui.h>
 #include <tr/imgui.hpp>
 
@@ -78,10 +78,10 @@ Preview::TextBounds Preview::findTextBounds(const FileEdit& fileEdit) const noex
 
 		x += glyph.advance;
 		if (glyph.width != 0 && glyph.height != 0) {
-			bounds.min.x = std::min(bounds.min.x, float(x + glyph.xOffset));
-			bounds.min.y = std::min(bounds.min.y, float(line * lineSkip + glyph.yOffset));
-			bounds.max.x = std::max(bounds.max.x, float(x + glyph.xOffset + glyph.width));
-			bounds.max.y = std::max(bounds.max.y, float(line * lineSkip + glyph.yOffset + glyph.height));
+			bounds.min.x = std::min<float>(bounds.min.x, x + glyph.xOffset);
+			bounds.min.y = std::min<float>(bounds.min.y, line * lineSkip + glyph.yOffset);
+			bounds.max.x = std::max<float>(bounds.max.x, x + glyph.xOffset + glyph.width);
+			bounds.max.y = std::max<float>(bounds.max.y, line * lineSkip + glyph.yOffset + glyph.height);
 		}
 	}
 
