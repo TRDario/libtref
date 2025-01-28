@@ -10,7 +10,7 @@
 
 tr::Window initializeWindow()
 {
-	tr::Window window{"gtref", {800, 600}, tr::CENTERED_POS, tr::WindowFlag::RESIZABLE | tr::WindowFlag::MAXIMIZED};
+	tr::Window window{"gtref", {800, 600}, tr::WindowFlag::RESIZABLE | tr::WindowFlag::MAXIMIZED};
 	window.events().sendTextInputEvents(true);
 
 	ImGui::CreateContext();
@@ -80,7 +80,7 @@ int main(int, char** argv)
 		Preview   preview;
 		Help      help;
 
-		tr::Timer drawTimer{tr::createDrawTimer(tr::display().displayMode(tr::DESKTOP_MODE).refreshRate)};
+		tr::Timer drawTimer{tr::createDrawTimer()};
 		bool      redraw{true};
 		bool      active{true};
 
