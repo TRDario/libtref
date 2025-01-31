@@ -22,7 +22,7 @@ class FileEdit {
 	const tref::GlyphMap& glyphs() const noexcept;
 
 	// Gets the font texture.
-	const tr::Texture2D& texture() const noexcept;
+	const tr::ColorTexture2D& texture() const noexcept;
 
 	// Tries to close the current font file, prompting to save if needed.
 	bool close(Selection& selection) noexcept;
@@ -44,10 +44,10 @@ class FileEdit {
 
   private:
 	struct File {
-		Font          font;
-		tr::Bitmap    bitmap;
-		tr::Texture2D texture;
-		History       history;
+		Font               font;
+		tr::Bitmap         bitmap;
+		tr::ColorTexture2D texture;
+		History            history;
 
 		File(LoadResult&& loadResult);
 	};

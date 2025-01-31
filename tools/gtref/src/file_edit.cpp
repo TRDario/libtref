@@ -69,7 +69,7 @@ const tref::GlyphMap& FileEdit::glyphs() const noexcept
 	return _file->font.glyphs;
 }
 
-const tr::Texture2D& FileEdit::texture() const noexcept
+const tr::ColorTexture2D& FileEdit::texture() const noexcept
 {
 	GTREF_ASSERT(!empty());
 
